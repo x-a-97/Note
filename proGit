@@ -1,0 +1,127 @@
+t config 配置变量的存储位置：
+* /etc/gitconfig    系统配置
+* ~/.gitconfig       用户配置
+* .git/config         仓库配置
+# 每一级别覆盖上一级别配置
+
+配置用户信息：
+    git config —global user.name “user_name”
+    git config —global user.email user@host.com
+# 可在项目目录下使用 不含 —global 的命令单独配置用户信息
+
+配置默认文本编辑器：
+    git config —global nvim
+
+查找配置信息：
+    git config —list
+    git config user.name
+
+获取帮助：
+    git help <verb>
+    e.g: git help config
+
+取得Git仓库：
+1. 在现有项目目录下导入所有文件到Git中
+2. 从服务器克隆一个现有Git仓库
+
+在现有目录中初始化仓库：
+    git init
+    git add *.c
+    git add LICENSE
+    git commit -m ‘initial project version’
+
+克隆现有仓库：
+    git clone https://github.com/libgit2/libgit2
+    git clone https://github.com/libgit2/libgit2 mylibgit     # 自定义本地仓库名字
+
+检查当前文件状态:
+    git status
+
+跟踪新文件(添加内容到下一次提交)：
+    git add README
+    git status
+
+状态简览： git status -s
+
+忽略文件：cat .gitignore
+    .gitignore 格式规范：
+        - 所有空行活以 # 开头的行会被Git忽略
+        - 可使用标准glob模式（shell的简化正则表达式）匹配
+        - 匹配模式可以以（/）开头防止递归 ？？？
+        - 匹配模式可以以（/）结尾制定目录
+        - 模式前加（！）取反
+    e.g:    *.a
+             !lib.a
+            /TODO
+            build/
+            doc/*.txt
+            Doc/**/*.pdf 
+
+查看已暂存和未暂存的修改：
+    git status
+    git diff
+    git diff —staged
+
+提交更新：git commit
+                  git commit -m “Story 182: Fix benchmarks for speed”
+
+跳过使用暂存区域： git commit -a
+
+从git移除文件并从工作目录中删除：git rm
+若之前修改过且已放到暂存区： git rm -f
+从Git仓库删除，但保留在工作目录： git rm —cached README
+
+移动文件：git mv file_from file_to
+E.g:    git mv README.md README
+          git status
+
+列出所有更新： git log
+    git log -p -2 # 查看最近两次提交的内容差异
+    git log —stat # 查看提交的简略统计信息
+    git log --pretty=oneline | short | full | fulle # 以其他格式显示提交历史
+    git log --pretty=format:"%h - %an, %ar : %s"
+    git log --pretty=format:"%h %s" --graph
+    git log --since=2.weeks # 列出两周内的提交
+    git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
+    --before="2008-11-01" --no-merges -- t/
+    # 2008年10月间， Junio Hamono 提交的但未合并的测试文件
+    git log -Sfunction_name # 添加或移除了某一特定函数的引用的提交
+
+撤销操作：
+    git commit --amend # 将暂存区文件提交，若自上次提交以来还未修改，快照不变，仅修改提交信息
+    # 以下第二次提交将代替第一次提交
+    git commit -m 'initial commit'
+    git add forgotten_file
+    git commit --amend
+
+取消暂存的文件：git reset HEAD <file>
+撤销修改：git checkout -- <file>
+
+查看远程仓库：git remote -v
+添加远程仓库：git remote add <shortname> <url>
+从远程仓库中拉取：git fetch [remote-name]
+推送到远程仓库：git push [remote-name] [branch-name]
+		git push origin master
+查看远程仓库：git remote show origin
+远程仓库重命名：git remote rename pb paul
+删除远程仓库: git remote rm paul
+
+列出标签：git tag
+	  git tag -l 'v1.8.5*'
+创建标签：git tag -a v1.4 -m 'my version 1.4'
+	  git tag
+	  git show v1.4
+
+分支创建：git branch testing
+
+查看各分支当前所指的对象：git log --oneline --decorate
+分支切换：git checkout testing
+
+查看分叉历史：git log --oneline --decorate --graph --all
+
+创建一个新分支并切换到那个分支上：git checkout -b iss53
+
+查看所有分支: git branch -v
+	      git branch --merged
+	      git branch --no-merged
+

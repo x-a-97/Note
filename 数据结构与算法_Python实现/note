@@ -1,0 +1,118 @@
+访问器：返回一个对象的状态信息，不改变状态的方法
+应用程序/更新方法：改变一个对象的状态，eg: list.sort()
+
+布尔类：
+	bool(foo)
+	foo为数字：0 False, 非0 True
+	foo为序列或其他容器：空False, 非空True
+
+整型类：
+	int 可表示任意大小的整型值
+	int() 返回0
+	int(f)得到f的整数部分（f为浮点值）
+	int('137') => 137
+	int('hello') => ValueError
+	int('7f', 16) => 127
+浮点类：
+	float 类似Java/C++中的double型
+	6.022e23 = 6.022*10**23
+	float() => 0.0
+	float(2) => 2.0
+	float('3.14') => 3.14
+序列类型：
+	列表list，任意对象的序列
+		- 存储其元素的引用序列
+		- 可以是任意对象（包括None）
+		- 基于数组的序列
+		- 可随需求动态扩展和收缩存储容量
+		- list() => []
+		- list('hello') => ['h', 'e', 'l','l','o']
+
+	元组tuple，list类的一个不可改变版本
+		- s = (17,) => (17,)
+
+	str类，文本字符的不可变序列
+		# 字符是长度为1的字符串
+
+	set类，一个集合的数学概念，没有重复元素，元素没有内在联系
+		- 不保存任何有特定顺序的元素集
+		- 只能添加不可变类型的实例
+	frozenset类， set类的一种不可变形式
+
+	字典类，一个键-值对映射
+		- pairs = [('ga','Irish'),('de','German')]
+		  dict(pairs)
+运算符
+	- 运算符的语义取决于其操作数的类型
+
+逻辑运算符
+	not
+	and
+	or
+
+相等运算符
+	is 同一实体
+	is not 不同的实体
+	== 等价
+	!= 不等价
+比较运算符
+	< 
+	<= 
+	>
+	>=
+算术运算符
+	+
+	-
+	*
+	/
+	//整除
+	% 模
+位运算
+	～ 取反
+	& 位与
+	| 位或
+	^ 位异或
+	<< 左移位，0填充
+	>> 右移位，符号位填充
+
+序列运算符(str, tuple, list)
+	s[j] 	索引下标为j的元素
+	s[start:stop] 	切片操作得到索引为[start, stop)的序列
+	s[start:stop:step] 切片操作，新的序列包含索引为start, start + step, stat + 2*step,...,
+	s + t	序列的连接
+	k * s 序列s连接 s+s+s(k次）
+	val in s   检查元素val在序列s中
+	val not in s 检查元素val不在序列s中
+
+集合运算符(set,frozenset)
+	key in s
+	key not in s
+	s1 == s2
+	s1 != s2
+	s1 <= s2
+	s1 < s2
+	s1 >= s2
+	s1 > s2
+	s1 | s2 # s1和s2的并集
+	s1 & s2 # s1和s2的交集
+	s1 - s2 # s1和s2的差集
+	s1 ^ s2 # 对称差分（元素在s1与s2其中之一）
+
+字典运算符 dictionary
+	d[key]
+	d[key] == value
+	del d[key]
+	key in d
+	key not in d
+	d1 == d2
+	d1 != d2
+
+
+
+
+	
+
+
+
+
+	
